@@ -1,0 +1,4 @@
+type EntityAbstract {
+  id: ID! @unique
+  typeName: String! @unique
+}

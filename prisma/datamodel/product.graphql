@@ -1,0 +1,17 @@
+type Product {
+  id: ID! @unique
+  name: String!
+  description: String!
+  tags: [String!]
+  variants: [ProductVariant!]!
+    @relation(name: "ProductVariants", onDelete: CASCADE)
+  owner: StoreManager! @relation(name: "StoreManager", onDelete: SET_NULL)
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type StoreManager {
+  id: ID! @unique
+  uid: String! @unique
+  products: [Product!]! @relation(name: "StoreManager", onDelete: CASCADE)
+}

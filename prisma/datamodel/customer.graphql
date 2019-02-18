@@ -1,0 +1,22 @@
+type Customer {
+  id: ID! @unique
+  uid: String! @unique
+  emailId: String! @unique
+  mobileNumber: String
+  name: String
+  cartItems: [CustomerCartItem!]!
+    @relation(name: "CustomerCartItems", onDelete: CASCADE)
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CustomerCartItem {
+  id: ID! @unique
+  customer: Customer! @relation(name: "CustomerCartItems", onDelete: SET_NULL)
+  productVariant: ProductVariant!
+    @relation(name: "ProductsInCart", onDelete: SET_NULL)
+  quantity: Int!
+  savedForLater: Boolean! @default(value: "false")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

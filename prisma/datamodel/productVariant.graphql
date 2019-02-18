@@ -1,0 +1,13 @@
+type ProductVariant {
+  id: ID! @unique
+  entityType: EntityAbstract!
+  product: Product! @relation(name: "ProductVariants", onDelete: SET_NULL)
+  isDefaultVariant: Boolean! @default(value: "false")
+  title: String!
+  listPrice: Float!
+  salePrice: Float!
+  cartedIn: [CustomerCartItem!]!
+    @relation(name: "ProductsInCart", onDelete: SET_NULL)
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

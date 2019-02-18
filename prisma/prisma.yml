@@ -1,0 +1,15 @@
+datamodel:
+  - ./datamodel/customer.graphql
+  - ./datamodel/entity.graphql
+  - ./datamodel/product.graphql
+  - ./datamodel/productVariant.graphql
+
+generate:
+  - generator: typescript-client
+    output: ../src/generated/prisma-client-ts/
+
+hooks:
+  post-deploy:
+    - prisma generate
+
+endpoint: https://eu1.prisma.sh/kumar-gaurav/shield-fallback-deny/dev
